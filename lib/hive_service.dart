@@ -28,16 +28,13 @@ class HiveService extends ChangeNotifier {
 
   void editContact(Contact updatedContact, int index) async {
     Box<Contact> box = await Hive.openBox<Contact>(contactHiveBox);
-    if (index != -1) {
       box.putAt(index, updatedContact);
       notifyListeners();
-    }
   }
 
   Future<void> createItem(Contact contact) async {
     Box<Contact> box = await Hive.openBox<Contact>(contactHiveBox);
     await box.add(contact);
-    _contacts.add(contact);
     _contacts = box.values.toList();
     notifyListeners();
   }

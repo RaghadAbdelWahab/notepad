@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
-class Contacts extends StatelessWidget {
-  Contacts({super.key});
+class ContactsScreen extends StatelessWidget {
+  ContactsScreen({super.key});
 
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -17,30 +17,29 @@ class Contacts extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        flexibleSpace: Stack(
-          children: [
-            Positioned(
-              bottom: 10,
-              left: 15,
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/telephone.png',
-                    width: 40,
+        flexibleSpace: Align(
+          alignment: AlignmentDirectional.bottomStart,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Image.asset(
+                  'assets/telephone.png',
+                  width: 40,
+                ),
+                const SizedBox(width: 5),
+                const Text(
+                  'Contacts',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
                   ),
-                  const SizedBox(width: 5),
-                  const Text(
-                    'Contacts',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
         backgroundColor: const Color.fromARGB(255, 25, 171, 144),
         actions: [
