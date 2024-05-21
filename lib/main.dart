@@ -9,6 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(ContactAdapter());
+  await Hive.openBox<Contact>('contact-box');
   runApp(
     ListenableProvider(
       create: (context) {

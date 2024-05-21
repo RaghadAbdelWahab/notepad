@@ -4,13 +4,27 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
-class ContactsScreen extends StatelessWidget {
+class ContactsScreen extends StatefulWidget {
   ContactsScreen({super.key});
 
+  @override
+  State<ContactsScreen> createState() => _ContactsScreenState();
+}
+
+class _ContactsScreenState extends State<ContactsScreen> {
   TextEditingController firstNameController = TextEditingController();
+
   TextEditingController lastNameController = TextEditingController();
+
   TextEditingController mobileNumberController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    Provider.of<HiveService>(context,listen: false).getItems();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
